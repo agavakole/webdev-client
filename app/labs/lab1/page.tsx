@@ -1,6 +1,7 @@
 import HeadingTags from "./HeadingTags";
 import ParagraphTag from "./ParagraphTag";
 import ListTags from "./ListTags";
+import Tables from "./Tables";
 
 export default function Lab1() {
   return (
@@ -10,6 +11,7 @@ export default function Lab1() {
       <HeadingTags />
       <ParagraphTag />
       <ListTags />
+      <Tables />
     </div>
   );
 }
