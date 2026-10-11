@@ -198,3 +198,50 @@ p#wd-id-selector-3 {
 .wd-my-rounded {
   border-radius: 60px;
 }
+
+/* 2.1.12 dimensions */
+.wd-dimension-portrait {
+  width: 75px;
+  height: 100px;
+}
+.wd-dimension-landscape {
+  width: 100px;
+  height: 75px;
+}
+.wd-dimension-square {
+  width: 75px;
+  height: 75px;
+}
+.wd-ai-dimension {
+  width: 120px;
+  height: 60px;
+  background-color: #ffff07;
+  overflow: hidden;
+}
+
+/* 2.1.12 display */
+.wd-display-inline {
+  display: inline;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
+.wd-display-inline-block {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
+.wd-display-block {
+  display: block;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+}
+
+
+/* My own dimension */
+.wd-my-dimension {
+  width: 180px;
+  height: 100px;
+}
