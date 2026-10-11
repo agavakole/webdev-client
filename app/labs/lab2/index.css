@@ -1,0 +1,83 @@
+/* p {
+  background-color: green;
+  color: white;
+} */
+
+/* ===== ID selectors ===== */
+p#wd-id-selector-1 {
+  background-color: red;
+  color: white;
+}
+p#wd-id-selector-2 {
+  background-color: yellow;
+  color: black;
+}
+p#wd-ai-id-selector {
+  background-color: teal;
+  color: white;
+}
+
+/* ===== Class selectors ===== */
+.wd-class-selector {
+  background-color: yellow;
+  color: blue;
+}
+.wd-ai-class-selector {
+  background-color: lightgreen;
+  color: darkgreen;
+}
+
+/* ===== Document structure ===== */
+.wd-selector-1 .wd-selector-3 {
+  background-color: red;
+  color: white;
+}
+.wd-selector-2 > .wd-selector-3 > .wd-selector-4 {
+  background-color: yellow;
+  color: blue;
+}
+.wd-selector-1 .wd-ai-selector-5 {
+  background-color: black;
+  color: orange;
+}
+
+/* ===== Cascade: tag green < class yellow < id red (id wins) ===== */
+#wd-lab2 p.wd-ai-cascade {
+  background-color: yellow;
+}
+#wd-lab2 p#wd-ai-cascade {
+  background-color: red;
+  color: white;
+}
+
+/* ===== h2 sample ===== */
+#wd-lab2 h2 {
+  background-color: navy;
+  color: white;
+}
+
+/* rules go below */
+
+/* every h3 in Lab 2 */
+#wd-lab2 h3 {
+  background-color: orange;
+  color: black;
+}
+
+/* third id */
+p#wd-id-selector-3 {
+  background-color: purple;
+  color: white;
+}
+
+/* class (on a p AND an h4) */
+.wd-your-class {
+  background-color: lightblue;
+  color: black;
+}
+
+/* nested element */
+.wd-selector-1 .wd-your-nested {
+  background-color: lightgreen;
+  color: darkgreen;
+}
