@@ -1,4 +1,6 @@
 import "./index.css";
+import ForegroundColors from "./ForegroundColors";
+import BackgroundColors from "./BackgroundColors";
 
 export default function Lab2() {
   return (
@@ -118,6 +120,8 @@ export default function Lab2() {
           Tag, class and id rules all set my background. The id wins (red).
         </p>
       </div>
+      <ForegroundColors />
+      <BackgroundColors />
     </div>
   );
 }
