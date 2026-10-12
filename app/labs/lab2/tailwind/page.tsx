@@ -1,0 +1,32 @@
+import "./index.css";
+import TailwindBackgroundColors from "./TailwindBackgroundColors";
+import TailwindResponsiveBreakpoint from "./TailwindResponsiveBreakpoint";
+import TailwindResponsiveFlex from "./TailwindResponsiveFlex";
+import TailwindResponsiveGrid from "./TailwindResponsiveGrid";
+import TailwindResponsiveShowHide from "./TailwindResponsiveShowHide";
+import TailwindResponsiveSpacingText from "./TailwindResponsiveSpacingText";
+import TailwindSpacing from "./TailwindSpacing";
+import TailwindTypography from "./TailwindTypography";
+
+export default function TailwindLab() {
+  return (
+    <div className="p-8">
+      <h1 className="text-4xl font-bold mb-8">Tailwind CSS</h1>
+      <TailwindSpacing />
+      <hr className="my-8" />
+      <TailwindTypography />
+      <hr className="my-8" />
+      <TailwindBackgroundColors />
+      <hr className="my-8" />
+      <TailwindResponsiveBreakpoint />
+      <hr className="my-8" />
+      <TailwindResponsiveShowHide />
+      <hr className="my-8" />
+      <TailwindResponsiveFlex />
+      <hr className="my-8" />
+      <TailwindResponsiveGrid />
+      <hr className="my-8" />
+      <TailwindResponsiveSpacingText />
+    </div>
+  );
+}
