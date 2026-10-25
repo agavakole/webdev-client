@@ -1,11 +1,14 @@
 import Link from "next/link";
+import * as db from "../../../../database";
 
 export default async function AssignmentEditor({
   params,
 }: {
   params: Promise<{ cid: string; aid: string }>;
 }) {
-  const { cid } = await params;
+  const { cid, aid } = await params;
+
+  const assignment = db.assignments.find((a) => a._id === aid);
 
   return (
     <div id="wd-assignments-editor">
@@ -16,9 +19,10 @@ export default async function AssignmentEditor({
         </label>
         <input
           id="wd-name"
-          defaultValue="A1 - ENV + HTML"
+          defaultValue={assignment?.title ?? ""}
           className="w-full rounded border border-neutral-300 px-3 py-1.5"
         />
+        <p>Assignment id: {aid}</p>
       </div>
 
       {/* Description */}
@@ -28,7 +32,7 @@ export default async function AssignmentEditor({
         </label>
         <textarea
           id="wd-description"
-          defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Vercel."
+          defaultValue={assignment?.description ?? ""}
           className="h-32 w-full rounded border border-neutral-300 px-3 py-1.5"
         />
       </div>
@@ -40,7 +44,8 @@ export default async function AssignmentEditor({
         </label>
         <input
           id="wd-points"
-          defaultValue={100}
+          type="number"
+          defaultValue={assignment?.points ?? 100}
           className="w-full rounded border border-neutral-300 px-3 py-1.5"
         />
       </div>
@@ -139,6 +144,7 @@ export default async function AssignmentEditor({
         <input
           type="date"
           id="wd-due-date"
+          defaultValue={assignment?.due ?? ""}
           className="w-full rounded border border-neutral-300 px-3 py-1.5"
         />
       </div>
@@ -151,6 +157,7 @@ export default async function AssignmentEditor({
         <input
           type="date"
           id="wd-available-from"
+          defaultValue={assignment?.available ?? ""}
           className="w-full rounded border border-neutral-300 px-3 py-1.5"
         />
       </div>
