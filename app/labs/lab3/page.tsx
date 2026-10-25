@@ -34,6 +34,8 @@ import ServerComponentDemo from "./ServerComponentDemo";
 import Add from "./Add";
 import Square from "./Square";
 import Highlight from "./Highlight";
+import PathParameters from "./PathParameters";
+import TodoList from "./todos/TodoList";
 
 export default function Lab3() {
   return (
@@ -96,6 +98,8 @@ export default function Lab3() {
         Square of 5 = <Square>5</Square>
       </p>
       <Highlight>Children can be any JSX</Highlight>
+      <PathParameters />
+      <TodoList />
     </div>
   );
 }
