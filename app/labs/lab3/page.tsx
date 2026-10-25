@@ -6,6 +6,7 @@ import TernaryOperator from "./TernaryOperator";
 import ConditionalOutputIfElse from "./ConditionalOutputIfElse";
 import ConditionalOutputInline from "./ConditionalOutputInline";
 import NullUndefined from "./NullUndefined";
+import LegacyFunctions from "./LegacyFunctions";
 
 export default function Lab3() {
   return (
@@ -19,6 +20,7 @@ export default function Lab3() {
       <ConditionalOutputIfElse />
       <ConditionalOutputInline />
       <NullUndefined />
+      <LegacyFunctions />
     </div>
   );
 }
