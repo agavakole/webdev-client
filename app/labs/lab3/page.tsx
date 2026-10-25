@@ -28,6 +28,7 @@ import FunctionDestructing from "./FunctionDestructing";
 import DestructingImports from "./DestructingImports";
 import OptionalChaining from "./OptionalChaining";
 import Classes from "./Classes";
+import Styles from "./Styles";
 
 export default function Lab3() {
   return (
@@ -63,6 +64,7 @@ export default function Lab3() {
       <DestructingImports />
       <OptionalChaining />
       <Classes />
+      <Styles />
     </div>
   );
 }

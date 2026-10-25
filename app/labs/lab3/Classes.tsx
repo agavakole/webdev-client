@@ -4,7 +4,7 @@ export default function Classes() {
   const color = "blue";
   const dangerous = true;
 
-  const myColor = "yellow";
+  const myColor: string = "yellow";
   const myClass = myColor === "green" ? "wd-bg-green" : "wd-bg-yellow";
 
   const shade = "green";
