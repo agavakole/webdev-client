@@ -1,5 +1,6 @@
 import { FaPlus, FaSearch } from "react-icons/fa";
 import AssignmentItem from "./AssignmentItem";
+import * as db from "../../../database";
 
 export default async function Assignments({
   params,
@@ -7,6 +8,11 @@ export default async function Assignments({
   params: Promise<{ cid: string }>;
 }) {
   const { cid } = await params;
+
+  const assignments = db.assignments.filter(
+    (assignment) => assignment.course === cid,
+  );
+
   return (
     <div id="wd-assignments">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
@@ -18,6 +24,7 @@ export default async function Assignments({
             className="rounded border border-neutral-300 py-1.5 pr-3 pl-9 text-sm"
           />
         </div>
+
         <div className="flex gap-2">
           <button
             id="wd-add-assignment-group"
@@ -26,6 +33,7 @@ export default async function Assignments({
           >
             <FaPlus /> Group
           </button>
+
           <button
             id="wd-add-assignment"
             type="button"
@@ -35,11 +43,13 @@ export default async function Assignments({
           </button>
         </div>
       </div>
+
       <h3
         id="wd-assignments-title"
         className="mb-3 flex items-center justify-between rounded bg-neutral-200 p-3 text-base font-semibold"
       >
         <span>ASSIGNMENTS 40% of Total</span>
+
         <button
           type="button"
           className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-sm"
@@ -47,37 +57,17 @@ export default async function Assignments({
           <FaPlus />
         </button>
       </h3>
+
       <ul id="wd-assignment-list" className="m-0 list-none p-0">
-        <AssignmentItem
-          cid={cid}
-          aid="123"
-          title="A1 - ENV + HTML"
-          details="Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="124"
-          title="A2 - CSS + TAILWIND"
-          details="Multiple Modules | Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="125"
-          title="A3 - JAVASCRIPT + REACT"
-          details="Multiple Modules | Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="126"
-          title="A4 - CLOUD COMPUTING BASICS"
-          details="Multiple Modules | Not available until May 27 at 12:00am | Due Jun 3 at 11:59pm | 100 pts"
-        />
-        <AssignmentItem
-          cid={cid}
-          aid="ai-a"
-          title="A9 - Sample assignment"
-          details="Multiple Modules | Not available until Jun 1 at 12:00am | Due Jun 8 at 11:59pm | 100 pts"
-        />
+        {assignments.map((assignment) => (
+          <AssignmentItem
+            key={assignment._id}
+            cid={cid}
+            aid={assignment._id}
+            title={assignment.title}
+            details={`Multiple Modules | Not available until ${assignment.available} | Due ${assignment.due} | ${assignment.points} pts`}
+          />
+        ))}
       </ul>
     </div>
   );

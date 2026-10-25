@@ -1,0 +1,94 @@
+
+[
+  {
+    "_id": "A101",
+    "title": "A1",
+    "description": "Introduction to rocket propulsion.",
+    "points": 100,
+    "due": "2024-05-13",
+    "available": "2024-05-06",
+    "course": "RS101"
+  },
+  {
+    "_id": "A102",
+    "title": "A2",
+    "description": "Rocket propulsion fundamentals.",
+    "points": 100,
+    "due": "2024-05-20",
+    "available": "2024-05-13",
+    "course": "RS101"
+  },
+  {
+    "_id": "A103",
+    "title": "A3",
+    "description": "Rocket engine design and performance.",
+    "points": 100,
+    "due": "2024-05-27",
+    "available": "2024-05-20",
+    "course": "RS101"
+  },
+  {
+    "_id": "A201",
+    "title": "A1",
+    "description": "Introduction to aerodynamics.",
+    "points": 100,
+    "due": "2024-05-13",
+    "available": "2024-05-06",
+    "course": "RS102"
+  },
+  {
+    "_id": "A202",
+    "title": "A2",
+    "description": "Subsonic and supersonic flow.",
+    "points": 100,
+    "due": "2024-05-20",
+    "available": "2024-05-13",
+    "course": "RS102"
+  },
+  {
+    "_id": "A203",
+    "title": "A3",
+    "description": "Aerodynamic heating and thermal protection.",
+    "points": 100,
+    "due": "2024-05-27",
+    "available": "2024-05-20",
+    "course": "RS102"
+  },
+  {
+    "_id": "A301",
+    "title": "A1",
+    "description": "Introduction to spacecraft structural design.",
+    "points": 100,
+    "due": "2024-05-13",
+    "available": "2024-05-06",
+    "course": "RS103"
+  },
+  {
+    "_id": "A302",
+    "title": "A2",
+    "description": "Orbital mechanics and mission planning.",
+    "points": 100,
+    "due": "2024-05-20",
+    "available": "2024-05-13",
+    "course": "RS103"
+  },
+   {
+    "_id": "A303",
+    "title": "A3",
+    "description": "Spacecraft systems engineering.",
+    "points": 100,
+    "due": "2024-05-27",
+    "available": "2024-05-20",
+    "course": "RS103"
+  },
+  {
+    "_id": "A204",
+    "title": "A4",
+    "description": "Analyze aerodynamic forces and their effects on aircraft performance.",
+    "points": 100,
+    "due": "2024-06-03",
+    "available": "2024-05-27",
+    "course": "RS102"
+  }
+
+]
