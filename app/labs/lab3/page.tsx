@@ -19,6 +19,7 @@ import FindFunction from "./FindFunction";
 import FindIndex from "./FindIndex";
 import FilterFunction from "./FilterFunction";
 import IncludesSomeEvery from "./IncludesSomeEvery";
+import ReduceFunction from "./ReduceFunction";
 
 export default function Lab3() {
   return (
@@ -45,6 +46,7 @@ export default function Lab3() {
       <FindIndex />
       <FilterFunction />
       <IncludesSomeEvery />
+      <ReduceFunction />
     </div>
   );
 }
