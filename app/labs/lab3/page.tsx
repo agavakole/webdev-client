@@ -12,6 +12,7 @@ import ImpliedReturn from "./ImpliedReturn";
 import TemplateLiterals from "./TemplateLiterals";
 import SimpleArrays from "./SimpleArrays";
 import ArrayIndexAndLength from "./ArrayIndexAndLength";
+import AddingAndRemovingToFromArrays from "./AddingAndRemovingToFromArrays";
 
 export default function Lab3() {
   return (
@@ -31,6 +32,7 @@ export default function Lab3() {
       <TemplateLiterals />
       <SimpleArrays />
       <ArrayIndexAndLength />
+      <AddingAndRemovingToFromArrays />
     </div>
   );
 }
