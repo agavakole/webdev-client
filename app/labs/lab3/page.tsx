@@ -21,6 +21,8 @@ import FilterFunction from "./FilterFunction";
 import IncludesSomeEvery from "./IncludesSomeEvery";
 import ReduceFunction from "./ReduceFunction";
 import JsonStringify from "./JsonStringify";
+import House from "./House";
+import Spreader from "./Spreader";
 
 export default function Lab3() {
   return (
@@ -49,6 +51,8 @@ export default function Lab3() {
       <IncludesSomeEvery />
       <ReduceFunction />
       <JsonStringify />
+      <House />
+      <Spreader />
     </div>
   );
 }
