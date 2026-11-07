@@ -1,27 +1,59 @@
-export default function Destructing() {
-  // Object destructuring
-  const person = { name: "John", age: 25, city: "Boston" };
-  const { name, age, city } = person;
+import Math, { add, subtract, multiply, divide, remainder } from "./Math";
+import * as Matematica from "./Math";
 
-  // Array destructuring
-  const numbers = ["one", "two", "three", "four"];
-  const [first, second, third, fourth] = numbers;
-
+export default function DestructingImports() {
   return (
-    <div id="wd-destructing">
-      <h2>Destructing</h2>
-      <h3>Object Destructing</h3>
-      const {"{ name, age, city }"} = {JSON.stringify(person)} <br />
-      name = {name} <br />
-      age = {age} <br />
-      city = {city} <br />
-      <h3>Array Destructing</h3>
-      const {"[first, second, third, fourth]"} = {JSON.stringify(numbers)}{" "}
-      <br />
-      first = {first} <br />
-      second = {second} <br />
-      third = {third} <br />
-      fourth = {fourth} <br />
+    <div id="wd-destructuring-imports">
+      <h2>Destructing Imports</h2>
+
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr>
+            <th>Math</th>
+            <th>Matematica</th>
+            <th>Functions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Math.add(2, 3) = {Math.add(2, 3)}</td>
+            <td>Matematica.add(2, 3) = {Matematica.add(2, 3)}</td>
+            <td>add(2, 3) = {add(2, 3)}</td>
+          </tr>
+
+          <tr>
+            <td>Math.subtract(5, 1) = {Math.subtract(5, 1)}</td>
+            <td>Matematica.subtract(5, 1) = {Matematica.subtract(5, 1)}</td>
+            <td>subtract(5, 1) = {subtract(5, 1)}</td>
+          </tr>
+
+          <tr>
+            <td>Math.multiply(3, 4) = {Math.multiply(3, 4)}</td>
+            <td>Matematica.multiply(3, 4) = {Matematica.multiply(3, 4)}</td>
+            <td>multiply(3, 4) = {multiply(3, 4)}</td>
+          </tr>
+
+          <tr>
+            <td>Math.divide(8, 2) = {Math.divide(8, 2)}</td>
+            <td>Matematica.divide(8, 2) = {Matematica.divide(8, 2)}</td>
+            <td>divide(8, 2) = {divide(8, 2)}</td>
+          </tr>
+
+          <tr>
+            <td>Math.add(10, 20) = {Math.add(10, 20)}</td>
+            <td>Matematica.add(10, 20) = {Matematica.add(10, 20)}</td>
+            <td>add(10, 20) = {add(10, 20)}</td>
+          </tr>
+
+          <tr>
+            <td>Math.remainder(10, 3) = {Math.remainder(10, 3)}</td>
+            <td>Matematica.remainder(10, 3) = {Matematica.remainder(10, 3)}</td>
+            <td>remainder(10, 3) = {remainder(10, 3)}</td>
+          </tr>
+        </tbody>
+      </table>
+
       <hr />
     </div>
   );

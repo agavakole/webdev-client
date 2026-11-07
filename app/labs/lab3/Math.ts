@@ -14,12 +14,16 @@ export function multiply(a: number, b: number): number {
 export function divide(a: number, b: number): number {
   return a / b;
 }
+export function remainder(a: number, b: number): number {
+  return a % b;
+}
 
 const Math = {
   add,
   subtract,
   multiply,
   divide,
+  remainder,
 };
 
 export default Math;
