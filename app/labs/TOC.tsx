@@ -29,6 +29,12 @@ const LINKS = [
     match: (p: string) => p.startsWith("/labs/lab3"),
   },
   {
+    href: "/labs/lab4",
+    id: "wd-toc-lab4-link",
+    label: "Lab 4",
+    match: (p: string) => p.startsWith("/labs/lab4"),
+  },
+  {
     href: "https://kambaz.dev/book/ch3",
     id: "wd-toc-book-ch3-link",
     label: "Book Ch3",

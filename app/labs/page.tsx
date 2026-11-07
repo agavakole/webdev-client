@@ -24,7 +24,7 @@ export default function Labs() {
 
         <li>
           <Link href="/labs/lab4" id="wd-lab4-link">
-            Lab 4: React Basics
+            Lab 4: Managing Client State
           </Link>
         </li>
         <li>
