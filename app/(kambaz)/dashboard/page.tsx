@@ -8,29 +8,48 @@ import {
   type Course,
 } from "../store/coursesStore";
 import { useAccountContext } from "../account/AccountContext";
-import * as db from "../database";
+import { useEnrollmentsStore } from "../store/enrollmentsStore";
 
 export default function Dashboard() {
   const courses = useCoursesStore((state) => state.courses);
   const addCourse = useCoursesStore((state) => state.addCourse);
   const updateCourse = useCoursesStore((state) => state.updateCourse);
 
+  const enrollments = useEnrollmentsStore((state) => state.enrollments);
+  const enroll = useEnrollmentsStore((state) => state.enroll);
+  const unenroll = useEnrollmentsStore((state) => state.unenroll);
+
   const { currentUser } = useAccountContext();
 
   const [course, setCourse] = useState<Course>(emptyCourse);
+  const [showAllCourses, setShowAllCourses] = useState(false);
 
-  const visibleCourses = currentUser
-    ? courses.filter((c) =>
-        db.enrollments.some(
-          (enrollment) =>
-            enrollment.user === currentUser._id && enrollment.course === c._id,
-        ),
-      )
-    : courses;
+  const visibleCourses =
+    currentUser && !showAllCourses
+      ? courses.filter((c) =>
+          enrollments.some(
+            (enrollment) =>
+              enrollment.user === currentUser._id &&
+              enrollment.course === c._id,
+          ),
+        )
+      : courses;
 
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <div className="flex items-center justify-between gap-3">
+        <h1 id="wd-dashboard-title">Dashboard</h1>
+
+        <button
+          type="button"
+          id="wd-enrollments-toggle"
+          className="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
+          onClick={() => setShowAllCourses(!showAllCourses)}
+        >
+          {showAllCourses ? "Show Enrolled Courses" : "Enrollments"}
+        </button>
+      </div>
+
       <hr />
 
       <h5 className="flex flex-wrap items-center gap-2">
@@ -112,9 +131,35 @@ export default function Dashboard() {
         id="wd-dashboard-courses"
         className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
       >
-        {visibleCourses.map((c) => (
-          <CourseCard key={c._id} course={c} onEdit={() => setCourse(c)} />
-        ))}
+        {visibleCourses.map((c) => {
+          const isEnrolled = enrollments.some(
+            (enrollment) =>
+              enrollment.user === currentUser?._id &&
+              enrollment.course === c._id,
+          );
+
+          return (
+            <div key={c._id}>
+              <CourseCard course={c} onEdit={() => setCourse(c)} />
+
+              {currentUser && (
+                <button
+                  type="button"
+                  className={`mt-2 rounded px-3 py-1.5 text-sm font-medium text-white ${
+                    isEnrolled ? "bg-red-600" : "bg-green-600"
+                  }`}
+                  onClick={() =>
+                    isEnrolled
+                      ? unenroll(currentUser._id, c._id)
+                      : enroll(currentUser._id, c._id)
+                  }
+                >
+                  {isEnrolled ? "Unenroll" : "Enroll"}
+                </button>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

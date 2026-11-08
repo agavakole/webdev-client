@@ -5,6 +5,20 @@ import usersJson from "../database/users.json";
 
 export type User = (typeof usersJson)[number];
 
+export const emptyUser: User = {
+  _id: "",
+  username: "",
+  password: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: "STUDENT",
+  loginId: "",
+  section: "",
+  lastActivity: "",
+  totalActivity: "",
+};
+
 type AccountContextValue = {
   currentUser: User | null;
   setCurrentUser: (user: User | null) => void;

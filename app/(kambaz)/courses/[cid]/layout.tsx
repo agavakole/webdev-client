@@ -1,11 +1,13 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-import { useParams } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify } from "react-icons/fa6";
 import Breadcrumb from "./Breadcrumb";
 import { useCoursesStore } from "../../store/coursesStore";
+import { useEnrollmentsStore } from "../../store/enrollmentsStore";
+import { useAccountContext } from "../../account/AccountContext";
 
 export default function CoursesLayout({
   children,
@@ -13,12 +15,32 @@ export default function CoursesLayout({
   children: ReactNode;
 }>) {
   const { cid } = useParams();
+  const router = useRouter();
+
   const courseId = typeof cid === "string" ? cid : "";
 
   const courses = useCoursesStore((state) => state.courses);
+  const enrollments = useEnrollmentsStore((state) => state.enrollments);
+  const { currentUser } = useAccountContext();
+
   const course = courses.find((c) => c._id === courseId);
 
+  const isEnrolled = enrollments.some(
+    (enrollment) =>
+      enrollment.user === currentUser?._id && enrollment.course === courseId,
+  );
+
   const [showCourseNav, setShowCourseNav] = useState(true);
+
+  useEffect(() => {
+    if (!currentUser || !isEnrolled) {
+      router.replace("/dashboard");
+    }
+  }, [currentUser, isEnrolled, router]);
+
+  if (!currentUser || !isEnrolled) {
+    return null;
+  }
 
   return (
     <div id="wd-courses">
