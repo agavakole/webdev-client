@@ -1,15 +1,17 @@
+"use client";
+
+import { useParams, useRouter } from "next/navigation";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import AssignmentItem from "./AssignmentItem";
-import * as db from "../../../database";
+import { useAssignmentsStore } from "../../../store/assignmentsStore";
 
-export default async function Assignments({
-  params,
-}: {
-  params: Promise<{ cid: string }>;
-}) {
-  const { cid } = await params;
+export default function Assignments() {
+  const { cid } = useParams<{ cid: string }>();
+  const router = useRouter();
 
-  const assignments = db.assignments.filter(
+  const assignments = useAssignmentsStore((state) => state.assignments);
+
+  const courseAssignments = assignments.filter(
     (assignment) => assignment.course === cid,
   );
 
@@ -37,6 +39,7 @@ export default async function Assignments({
           <button
             id="wd-add-assignment"
             type="button"
+            onClick={() => router.push(`/courses/${cid}/assignments/new`)}
             className="inline-flex items-center gap-1 rounded bg-red-600 px-3 py-1.5 text-sm text-white"
           >
             <FaPlus /> Assignment
@@ -59,7 +62,7 @@ export default async function Assignments({
       </h3>
 
       <ul id="wd-assignment-list" className="m-0 list-none p-0">
-        {assignments.map((assignment) => (
+        {courseAssignments.map((assignment) => (
           <AssignmentItem
             key={assignment._id}
             cid={cid}
