@@ -11,6 +11,9 @@ import DateStateVariable from "./DateStateVariable";
 import ObjectStateVariable from "./ObjectStateVariable";
 import ArrayStateVariable from "./ArrayStateVariable";
 import ProfileForm from "./profile/ProfileForm";
+import ParentStateComponent from "./ParentStateComponent";
+import PropDrilling from "./PropDrilling";
+import UrlEncoding from "./UrlEncoding";
 
 export default function Lab4() {
   const sayHello = (message: string) => {
@@ -47,6 +50,9 @@ export default function Lab4() {
       <ObjectStateVariable />
       <ArrayStateVariable />
       <ProfileForm />
+      <ParentStateComponent />
+      <PropDrilling />
+      <UrlEncoding />
     </div>
   );
 }
