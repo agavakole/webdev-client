@@ -15,6 +15,7 @@ import ParentStateComponent from "./ParentStateComponent";
 import PropDrilling from "./PropDrilling";
 import UrlEncoding from "./UrlEncoding";
 import ContextExamples from "./context/ContextExamples";
+import ZustandExamples from "./zustand/ZustandExamples";
 
 export default function Lab4() {
   const sayHello = (message: string) => {
@@ -55,6 +56,7 @@ export default function Lab4() {
       <PropDrilling />
       <UrlEncoding />
       <ContextExamples />
+      <ZustandExamples />
     </div>
   );
 }
