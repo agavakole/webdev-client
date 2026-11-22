@@ -48,3 +48,13 @@ export const updateTodo = async (todo: { id: number }) => {
   const response = await axios.put(`${TODOS_API}/${todo.id}`, todo);
   return response.data;
 };
+
+export const fetchHello = async () => {
+  const response = await fetch("/api/lab5/hello");
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  return response.json();
+};
