@@ -3,20 +3,19 @@
 import type { ReactNode } from "react";
 import GreenCheckmark from "./GreenCheckmark";
 import ModuleControlButtons from "./ModuleControlButtons";
-import {
-  useModulesStore,
-  type CourseModule,
-} from "../../../store/modulesStore";
+import type { CourseModule } from "../../../store/modulesStore";
 
 export default function Module({
   module,
   children,
+  onRemove,
+  onUpdate,
 }: {
   module: CourseModule;
   children?: ReactNode;
+  onRemove: () => void;
+  onUpdate: (module: CourseModule) => void;
 }) {
-  const updateModule = useModulesStore((state) => state.updateModule);
-
   return (
     <li className="wd-module mb-5 overflow-hidden border border-neutral-400 p-0">
       <div className="wd-title flex items-center justify-between bg-neutral-200 p-3">
@@ -27,7 +26,7 @@ export default function Module({
             autoFocus
             onKeyDown={(event) => {
               if (event.key === "Enter") {
-                updateModule({
+                onUpdate({
                   ...module,
                   name: event.currentTarget.value,
                   editing: false,
@@ -41,7 +40,7 @@ export default function Module({
 
         <div className="flex items-center gap-3">
           <GreenCheckmark />
-          <ModuleControlButtons moduleId={module._id} />
+          <ModuleControlButtons moduleId={module._id} onRemove={onRemove} />
         </div>
       </div>
 
