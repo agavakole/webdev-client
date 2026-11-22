@@ -49,11 +49,6 @@ export default function Signin() {
         className="wd-password mb-2 w-full rounded border border-neutral-300 px-3 py-1.5"
       />
 
-      <input
-        id="wd-ai-signin-note"
-        placeholder="sample note"
-        className="mb-2 w-full rounded border border-neutral-300 px-3 py-1.5"
-      />
 
       <button
         type="button"
