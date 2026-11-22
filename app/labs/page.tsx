@@ -45,6 +45,10 @@ export default function Labs() {
       <a href="https://github.com/agavakole/webdev-server/tree/a5" id="wd-server-github">
         Server GitHub repository
       </a>
+      <br />
+      <a href="https://webdev-server-eo9b.onrender.com" id="wd-server-render">
+        Render API root
+      </a>
     </div>
   );
 }
