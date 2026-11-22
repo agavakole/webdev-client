@@ -53,6 +53,12 @@ const LINKS = [
     match: () => false,
   },
   {
+    href: "https://webdev-server-eo9b.onrender.com",
+    id: "wd-server-render",
+    label: "Render API",
+    match: () => false,
+  },
+  {
     href: "https://kambaz.dev/book/ch3",
     id: "wd-toc-book-ch3-link",
     label: "Book Ch3",
