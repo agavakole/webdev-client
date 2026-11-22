@@ -7,10 +7,11 @@ import { useModulesStore } from "../../../store/modulesStore";
 
 export default function ModuleControlButtons({
   moduleId,
+  onRemove,
 }: {
   moduleId: string;
+  onRemove: () => void;
 }) {
-  const deleteModule = useModulesStore((state) => state.deleteModule);
   const editModule = useModulesStore((state) => state.editModule);
 
   return (
@@ -23,7 +24,7 @@ export default function ModuleControlButtons({
 
       <FaTrash
         className="cursor-pointer text-red-600"
-        onClick={() => deleteModule(moduleId)}
+        onClick={onRemove}
         title="Delete module"
       />
 
