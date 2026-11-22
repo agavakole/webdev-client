@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAccountContext, type User } from "../AccountContext";
+import { useAccountContext } from "../AccountContext";
+import { signup as signupRequest } from "../client";
 
 export default function Signup() {
   const { setCurrentUser } = useAccountContext();
@@ -14,7 +15,7 @@ export default function Signup() {
   const [verifyPassword, setVerifyPassword] = useState("");
   const [error, setError] = useState("");
 
-  const signup = () => {
+  const signup = async () => {
     if (password !== verifyPassword) {
       setError("Passwords do not match");
       return;
@@ -25,22 +26,13 @@ export default function Signup() {
       return;
     }
 
-    const newUser: User = {
-      _id: Date.now().toString(),
-      username: username,
-      password: password,
-      firstName: "",
-      lastName: "",
-      email: "",
-      role: "STUDENT",
-      loginId: username,
-      section: "",
-      lastActivity: "",
-      totalActivity: "",
-    };
-
-    setCurrentUser(newUser);
-    router.push("/account/profile");
+    try {
+      const newUser = await signupRequest({ username, password });
+      setCurrentUser(newUser);
+      router.push("/account/profile");
+    } catch (error) {
+      setError("Unable to create this account. Please try another username.");
+    }
   };
 
   return (
