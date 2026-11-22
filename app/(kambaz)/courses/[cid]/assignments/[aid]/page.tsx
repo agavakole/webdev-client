@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAssignmentsStore } from "../../../../store/assignmentsStore";
+import * as client from "../../../assignments/client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams<{ cid: string; aid: string }>();
@@ -12,6 +13,7 @@ export default function AssignmentEditor() {
     state.assignments.find((item) => item._id === aid && item.course === cid),
   );
 
+  const setAssignments = useAssignmentsStore((state) => state.setAssignments);
   const addAssignment = useAssignmentsStore((state) => state.addAssignment);
   const updateAssignment = useAssignmentsStore(
     (state) => state.updateAssignment,
@@ -26,19 +28,40 @@ export default function AssignmentEditor() {
   );
   const [until, setUntil] = useState(assignment?.until?.slice(0, 10) ?? "");
 
-  const save = () => {
+  useEffect(() => {
+    const loadAssignment = async () => {
+      if (aid === "new") return;
+
+      const courseAssignments = await client.findAssignmentsForCourse(cid);
+      setAssignments(courseAssignments);
+      const found = courseAssignments.find((item) => item._id === aid);
+
+      if (found) {
+        setTitle(found.title);
+        setDescription(found.description);
+        setPoints(found.points);
+        setDue(found.due.slice(0, 10));
+        setAvailable(found.available.slice(0, 10));
+        setUntil(found.until?.slice(0, 10) ?? "");
+      }
+    };
+
+    loadAssignment();
+  }, [aid, cid, setAssignments]);
+
+  const save = async () => {
     if (aid === "new") {
-      addAssignment({
+      const created = await client.createAssignmentForCourse(cid, {
         title,
         description,
         points,
         due,
         available,
         until,
-        course: cid,
       });
+      addAssignment(created);
     } else if (assignment) {
-      updateAssignment({
+      const saved = await client.updateAssignment({
         ...assignment,
         title,
         description,
@@ -46,8 +69,8 @@ export default function AssignmentEditor() {
         due,
         available,
         until,
-        editing: false,
       });
+      updateAssignment(saved);
     }
 
     router.push(`/courses/${cid}/assignments`);
