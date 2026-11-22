@@ -67,12 +67,6 @@ export default function Profile() {
         className="mb-2 w-full rounded border border-neutral-300 px-3 py-1.5"
       />
 
-      {/* Personal extra field: date of birth */}
-      <input
-        type="date"
-        id="wd-dob"
-        className="mb-2 w-full rounded border border-neutral-300 px-3 py-1.5"
-      />
 
       <input
         value={profile.email}
