@@ -1,18 +1,36 @@
 "use client";
 
+import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import AssignmentItem from "./AssignmentItem";
 import { useAssignmentsStore } from "../../../store/assignmentsStore";
+import * as client from "../../assignments/client";
 
 export default function Assignments() {
   const { cid } = useParams<{ cid: string }>();
   const router = useRouter();
 
   const assignments = useAssignmentsStore((state) => state.assignments);
+  const setAssignments = useAssignmentsStore((state) => state.setAssignments);
+  const deleteAssignment = useAssignmentsStore((state) => state.deleteAssignment);
+
+  useEffect(() => {
+    const loadAssignments = async () => {
+      const courseAssignments = await client.findAssignmentsForCourse(cid);
+      setAssignments(courseAssignments);
+    };
+
+    loadAssignments();
+  }, [cid, setAssignments]);
+
+  const onDeleteAssignment = async (assignmentId: string) => {
+    await client.deleteAssignment(assignmentId);
+    deleteAssignment(assignmentId);
+  };
 
   const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === cid,
+    (assignment) => assignment.course === cid
   );
 
   return (
@@ -52,7 +70,6 @@ export default function Assignments() {
         className="mb-3 flex items-center justify-between rounded bg-neutral-200 p-3 text-base font-semibold"
       >
         <span>ASSIGNMENTS 40% of Total</span>
-
         <button
           type="button"
           className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-sm"
@@ -69,6 +86,7 @@ export default function Assignments() {
             aid={assignment._id}
             title={assignment.title}
             details={`Multiple Modules | Not available until ${assignment.available} | Due ${assignment.due} | ${assignment.points} pts`}
+            onDelete={() => onDeleteAssignment(assignment._id)}
           />
         ))}
       </ul>
