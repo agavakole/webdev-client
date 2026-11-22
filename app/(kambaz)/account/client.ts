@@ -11,7 +11,7 @@ export const signin = async (credentials: { username: string; password: string }
 };
 
 export const signup = async (user: { username: string; password: string }) => {
-  const response = await axios.post(`${USERS_API}/signup`, user);
+  const response = await axiosWithCredentials.post(`${USERS_API}/signup`, user);
   return response.data;
 };
 
@@ -26,6 +26,6 @@ export const profile = async () => {
 };
 
 export const signout = async () => {
-  const response = await axios.post(`${USERS_API}/signout`);
+  const response = await axiosWithCredentials.post(`${USERS_API}/signout`);
   return response.data;
 };
