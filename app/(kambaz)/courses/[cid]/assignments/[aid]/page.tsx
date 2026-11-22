@@ -247,16 +247,6 @@ export default function AssignmentEditor() {
         />
       </div>
 
-      {/* AI sample notes */}
-      <div id="wd-ai-editor-notes" className="mb-3">
-        <label htmlFor="wd-ai-notes" className="mb-1 block font-medium">
-          Sample notes
-        </label>
-        <textarea
-          id="wd-ai-notes"
-          className="w-full rounded border border-neutral-300 px-3 py-1.5"
-        />
-      </div>
 
       <hr />
 
