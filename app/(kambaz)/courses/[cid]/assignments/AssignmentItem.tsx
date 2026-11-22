@@ -2,22 +2,20 @@
 
 import Link from "next/link";
 import { FaFileAlt, FaTrash } from "react-icons/fa";
-import { useAssignmentsStore } from "../../../store/assignmentsStore";
 
 export default function AssignmentItem({
   cid,
   aid,
   title,
   details,
+  onDelete,
 }: {
   cid: string;
   aid: string;
   title: string;
   details: string;
+  onDelete: () => void;
 }) {
-  const deleteAssignment = useAssignmentsStore(
-    (state) => state.deleteAssignment,
-  );
 
   const removeAssignment = () => {
     const confirmed = window.confirm(
@@ -25,7 +23,7 @@ export default function AssignmentItem({
     );
 
     if (confirmed) {
-      deleteAssignment(aid);
+      onDelete();
     }
   };
 
