@@ -38,8 +38,12 @@ export default function Labs() {
           </Link>
         </li>
       </ul>
-      <a href="https://github.com/agavakole/webdev-client" id="wd-github">
-        GitHub repository
+      <a href="https://github.com/agavakole/webdev-client/tree/a5" id="wd-github">
+        Client GitHub repository
+      </a>
+      <br />
+      <a href="https://github.com/agavakole/webdev-server/tree/a5" id="wd-server-github">
+        Server GitHub repository
       </a>
     </div>
   );
