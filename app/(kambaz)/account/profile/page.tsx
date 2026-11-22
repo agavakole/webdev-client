@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAccountContext, type User } from "../AccountContext";
+import { signout as signoutRequest, updateUser as updateUserRequest } from "../client";
 
 export default function Profile() {
   const { currentUser, setCurrentUser } = useAccountContext();
@@ -19,7 +20,14 @@ export default function Profile() {
     return null;
   }
 
-  const signout = () => {
+  const updateProfile = async () => {
+    const user = await updateUserRequest(profile);
+    setCurrentUser(user);
+    setProfile(user);
+  };
+
+  const signout = async () => {
+    await signoutRequest();
     setCurrentUser(null);
     router.push("/account/signin");
   };
@@ -89,6 +97,15 @@ export default function Profile() {
         <option value="STUDENT">Student</option>
         <option value="TA">TA</option>
       </select>
+
+      <button
+        type="button"
+        onClick={updateProfile}
+        id="wd-update-profile"
+        className="mb-2 block w-full rounded bg-blue-600 px-3 py-1.5 text-center text-white"
+      >
+        Update
+      </button>
 
       <button
         type="button"
