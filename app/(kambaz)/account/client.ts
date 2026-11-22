@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const axiosWithCredentials = axios.create({ withCredentials: true });
+
 const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
 const USERS_API = `${HTTP_SERVER}/api/users`;
 
 export const signin = async (credentials: { username: string; password: string }) => {
-  const response = await axios.post(`${USERS_API}/signin`, credentials);
+  const response = await axiosWithCredentials.post(`${USERS_API}/signin`, credentials);
   return response.data;
 };
 
@@ -14,12 +16,12 @@ export const signup = async (user: { username: string; password: string }) => {
 };
 
 export const updateUser = async (user: { _id: string }) => {
-  const response = await axios.put(`${USERS_API}/${user._id}`, user);
+  const response = await axiosWithCredentials.put(`${USERS_API}/${user._id}`, user);
   return response.data;
 };
 
 export const profile = async () => {
-  const response = await axios.get(`${USERS_API}/profile`);
+  const response = await axiosWithCredentials.get(`${USERS_API}/profile`);
   return response.data;
 };
 
