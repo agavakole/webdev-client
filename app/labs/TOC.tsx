@@ -41,6 +41,18 @@ const LINKS = [
     match: (p: string) => p.startsWith("/labs/lab5"),
   },
   {
+    href: "https://github.com/agavakole/webdev-client/tree/a5",
+    id: "wd-github",
+    label: "Client GitHub",
+    match: () => false,
+  },
+  {
+    href: "https://github.com/agavakole/webdev-server/tree/a5",
+    id: "wd-server-github",
+    label: "Server GitHub",
+    match: () => false,
+  },
+  {
     href: "https://kambaz.dev/book/ch3",
     id: "wd-toc-book-ch3-link",
     label: "Book Ch3",
